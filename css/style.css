@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+  max-width: 900px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: auto auto auto;
+    background-color: lawngreen;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  .grid-item {    
+    width: calc(100%/3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;    
+    font-size: 30px;    
+    aspect-ratio: 1;    
+  }
+
+  #play-btn {
+    font-size: 20px;
+    padding: 5px; 
+    cursor: pointer;   
+  }
+
+  .header-title {
+    margin-bottom: 20px;
+  }
+
+  .cyan-cell {
+    background-color: lightcyan;
+  }
