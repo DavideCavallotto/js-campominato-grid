@@ -13,53 +13,24 @@ console.log(btnPlayDOMElement);
 
 
 
-btnPlayDOMElement.addEventListener('click', function(){
-    
-    // rimuove gli elementi generati nella griglia
-    gridDOMElement.innerHTML = '';
-
+btnPlayDOMElement.addEventListener('click', function(){    
     // - recupero gli elementi della select dal DOM 
     const difficultyDOMElement = document.getElementById('difficulty');
     const value = difficultyDOMElement.options[difficultyDOMElement.selectedIndex].value;
     console.log(value);
     
-    // genera gli elementi nella griglia
-    if (value === 'easy') {
+    if (value ==='easy') {
+        gridGenerator(100)
         gridDOMElement.classList.add('border-grid');
-        for (let i = 0; i < 100; i++) {
-            const n = i + 1;
-            console.log(n);
-        
-            const htmlCell = `<div class="grid-item">${n}</div>`;
-            console.log(htmlCell);
-            // - stampa gli elementi generati nel DOM
-            gridDOMElement.innerHTML += htmlCell;
-        }
 
     } else if (value === 'normal') {
+        gridGenerator(81, 'medium-difficulty')
         gridDOMElement.classList.add('border-normal');
-        for (let i = 0; i < 81; i++) {
-            const n = i + 1;
-            console.log(n);
-        
-            const htmlCell = `<div class="grid-item medium-difficulty">${n}</div>`;
-            console.log(htmlCell);
-            // - stampa gli elementi generati nel DOM
-            gridDOMElement.innerHTML += htmlCell;
-        }
     } else if (value === 'hard') {
+        gridGenerator(49, 'hard-difficulty')
         gridDOMElement.classList.add('border-hard');
-        for (let i = 0; i < 49; i++) {
-            const n = i + 1;
-            console.log(n);
+    }   
         
-            const htmlCell = `<div class="grid-item hard-difficulty">${n}</div>`;
-            console.log(htmlCell);
-            // - stampa gli elementi generati nel DOM
-            gridDOMElement.innerHTML += htmlCell;
-        }
-    }
-    
     // - recupero gli elementi generati precedentemente dal DOM 
     const gridItemDOMElements = document.querySelectorAll('.grid-item');
     console.log(gridItemDOMElements);
@@ -77,3 +48,16 @@ btnPlayDOMElement.addEventListener('click', function(){
     }
 })
 
+function gridGenerator(numCells, classCell) {
+    const gridDOMElement = document.querySelector('.grid-container');
+    gridDOMElement.innerHTML = '';
+    gridDOMElement.classList.remove('border-grid', 'border-normal', 'border-hard'); 
+      
+
+    for (let i = 0; i < numCells; i++) {
+        const n = i + 1;      
+    
+        const htmlCell = `<div class="grid-item ${classCell}">${n}</div>`;        
+        gridDOMElement.innerHTML += htmlCell;
+    }
+}
